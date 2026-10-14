@@ -88,7 +88,7 @@ Qoidalar:
 - Hech kimni haqorat qilma, bahsli siyosiy/diniy mavzularda betaraf qol.
 - Aniq bilmasang, shuni ayt."""
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ["GOOGLE_API_KEY"]
+GEMINI_API_KEY = "8979109302:AAFABHdXHn5M_KledGR97bJenDdkfIexK34"    
 client = genai.Client(api_key=GEMINI_API_KEY)
 history = defaultdict(lambda: deque(maxlen=HISTORY_SIZE))
 last_reply = defaultdict(float)
