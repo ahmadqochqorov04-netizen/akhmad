@@ -27,20 +27,7 @@ from telegram.ext import (
     Application, MessageHandler, CommandHandler, ContextTypes, filters,
 )
 
-# --- Kalitlarni secrets.txt faylidan oʻqish (hosting oʻzgaruvchilarni saqlamasa) ---
-def _load_secrets():
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "secrets.txt")
-    if not os.path.exists(path):
-        return
-    with open(path, encoding="utf-8-sig") as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            key, value = line.split("=", 1)
-            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
-_load_secrets()
 
 logging.basicConfig(level=logging.INFO)
 logging.getLogger("httpx").setLevel(logging.WARNING)  # tokenni terminalga chiqarmaslik uchun
@@ -49,7 +36,8 @@ MODELS = [m.strip() for m in os.environ.get(
     "MODELS", "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.8-flash"
 ).split(",") if m.strip()]
 blocked_until = {}  # model -> vaqt (limit tugagan modelni vaqtincha oʻtkazib yuborish)
-TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
+TELEGRAM_TOKEN = "8979109302:AAFtUlSQvvEpKv5bsK2jGhchP_y7-9d2EzI"  
+GEMINI_API_KEY = "8979109302:AAFABHdXHn5M_KledGR97bJenDdkfIexK34"    
 GROUP_ID = os.environ.get("GROUP_ID")  # masalan: -1001234567890
 
 # ---- Sozlamalar ----
